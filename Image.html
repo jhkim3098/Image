@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.image.label }} {{ form.image() }}
+        <button type="submit">Upload</button>
+    </form>
+    <h2>Uploaded Images</h2>
+    <div>
+        {% for file in files %}
+            <img src="{{ url_for('static', filename='uploads/' + file) }}" style="max-width: 300px;">
+        {% endfor %}
+    </div>
+</body>
+</html>
